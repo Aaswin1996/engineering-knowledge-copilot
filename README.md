@@ -134,11 +134,6 @@ python -m pytest -v
 
 Coverage includes relevance-threshold behavior, non-finite distances, request validation, abstention, source filtering/deduplication, and dependency failures.
 
-## Interview story (adapt to your actual implementation)
-
-In my organisation, engineering knowledge was distributed across internal Wikis containing SOPs, ADRs, runbooks, and other technical documentation. Engineers had to search across multiple pages to find procedures or understand past architectural decisions. We built a RAG assistant that retrieves relevant passages from that knowledge base and supplies them as context to an LLM, so answers can be grounded in internal documentation and traced back to source documents. The system separates ingestion—document extraction, chunking, embedding, and indexing—from query-time retrieval and generation. Key design considerations include chunk quality, retrieval relevance, document freshness, citation traceability, and abstaining when evidence is insufficient.
-
-Only claim components, metrics, scale, and production controls that you personally verified in your organisation. This repository demonstrates a local version of the core RAG flow, not proof that every control was deployed in the original organisational system.
 
 ## Limitations and next steps
 
