@@ -1,0 +1,20 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg17-trixie
+    environment:
+      POSTGRES_USER: \${POSTGRES_USER:-raguser}
+      POSTGRES_PASSWORD: \${POSTGRES_PASSWORD:-ragpassword}
+      POSTGRES_DB: \${POSTGRES_DB:-engineering_rag}
+    ports:
+      - "5432:5432"
+    volumes:
+      - rag_postgres_data:/var/lib/postgresql/data
+      - ./sql/schema.sql:/docker-entrypoint-initdb.d/001-schema.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \${POSTGRES_USER:-raguser} -d \${POSTGRES_DB:-engineering_rag}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  rag_postgres_data:
